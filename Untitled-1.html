@@ -1,0 +1,172 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+  <title>上传人像、选择喜欢的脸谱</title>  
+  <style>  
+    /* CSS样式可以添加你的网页设计 */  
+    .gallery {  
+      display: flex;  
+      justify-content: center;  
+      margin: 10px;  
+    }  
+      
+    .gallery img {  
+      width: 50%;  
+      height: 50%;  
+      margin: 5px;  
+    }  
+  </style>  
+</head>  
+<body>  
+  <h1>上传人像、选择喜欢的脸谱</h1>  
+    
+  <form id="uploadForm">  
+    <input type="file" id="photoInput" accept="image/*">  
+    <button type="submit">上传照片</button>  
+  </form>  
+    
+  <div id="gallery">  
+    <img src="1.png" width=10% height=10% alt="关羽" onclick="selectImage(this)">  
+    <img src="2.png" width=10% height=10% alt="Image 2" onclick="selectImage(this)">  
+    <img src="3.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="4.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="5.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="6.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="7.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="8.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="9.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="10.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="11.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="12.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="13.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="14.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="15.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="16.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="17.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="18.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="19.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="20.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="21.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="22.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="23.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="24.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="25.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="26.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="27.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="28.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="29.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="30.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="31.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="32.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="33.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="34.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="35.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="36.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="37.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="38.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="39.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="40.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="41.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="42.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="43.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="44.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="45.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="46.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="47.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="48.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="49.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="50.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="51.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="52.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="53.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="54.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="55.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="56.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="57.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="58.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="59.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="60.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="61.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="62.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="63.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="64.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="65.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="66.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="67.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="68.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="69.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="70.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="71.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="72.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="73.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="74.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="75.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="76.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="77.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="78.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="79.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="80.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="81.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="82.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="83.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="84.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="85.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="86.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="87.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="88.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="89.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="90.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="91.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="92.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="93.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="94.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="95.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="96.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="97.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="98.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="99.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="100.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="101.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="102.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="103.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="104.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="105.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="106.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="107.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="108.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="109.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="110.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="111.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="112.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="113.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="114.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <img src="115.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">  
+    <!-- 添加更多预设图片 -->  
+  </div>  
+    
+  <script>  
+    function selectImage(imageElement) {  
+      alert("你选择了图片：" + imageElement.src);  
+      // 在这里可以进一步处理选择的图片，比如下载、预览等操作  
+    }  
+      
+    document.getElementById("uploadForm").addEventListener("submit", function(event) {  
+      event.preventDefault(); // 阻止表单默认提交行为  
+        
+      var photoInput = document.getElementById("photoInput");  
+      var file = photoInput.files[0]; // 获取选中的文件  
+        
+      // 创建FileReader对象以读取文件  
+      var reader = new FileReader();  
+      reader.onload = function(e) {  
+        // 在回调函数中处理上传的照片  
+        var img = document.createElement("img");  
+        img.src = e.target.result;
+        img.classList.add("gallery"); // 添加样式类以显示在图片画廊中  
+        document.getElementById("gallery").appendChild(img);  
+      };  
+      reader.readAsDataURL(file); // 将文件读取为DataURL格式的数据  
+    });  
+  </script>  
+</body>  
+</html>

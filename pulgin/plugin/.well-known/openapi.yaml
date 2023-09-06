@@ -1,0 +1,61 @@
+openapi: 3.0.1
+info:
+  title: 面谱智探API
+  description: 根据角色名字搜索对应京剧脸谱信息
+  version: 1.0.0
+
+servers:
+- url: http://127.0.0.1:8081
+
+paths:
+  /search_mask: 
+    post:
+      operationId: searchMask
+      summary: 根据角色名称搜索脸谱信息
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        200:
+          description: 成功返回搜索结果
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+
+components:
+  schemas:
+
+    SearchRequest:
+      type: object
+      required:
+        - words
+      properties:
+        words:
+          type: string
+          description: 搜索的角色名称
+          
+    SearchResponse:
+      type: object
+      properties:
+        prompt:
+          type: string
+          description: 自然语言描述
+        words:
+          type: string  
+          description: 搜索的角色名称
+        character_intro:
+          type: string
+          description: 角色简介
+        dramas:
+          type: array
+          items:
+            type: string
+            description: 出现该脸谱的京剧剧目
+        references:
+          type: array
+          items:
+            type: string
+            description: 了解该角色的参考资料

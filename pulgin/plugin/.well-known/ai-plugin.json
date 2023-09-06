@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1", 
+  "name_for_human": "面谱智探",
+  "name_for_model": "face_mask_search",
+  "description_for_human": "京剧脸谱查询系统,可搜索角色脸谱信息",
+  "description_for_model": "面向京剧脸谱的数据查询系统",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi", 
+    "url": "http://127.0.0.1:8081/.well-known/openapi.yaml"
+  },
+  "logo_url": "http://127.0.0.1:8081/logo.png",
+  "contact_email": "support@facemask.com",
+  "legal_info_url": "http://www.facemask.com/legal"
+}

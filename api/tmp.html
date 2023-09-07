@@ -1,0 +1,28 @@
+<html lang="zh-CN">
+    <head>
+        
+    </head>
+    <body>
+        <img id="outout" src="">
+        <button onclick="readResultTxt()">点击读取txt</button>
+        <pre id="txtContent"></pre>
+        <script>
+            const PROXY_SERVER_URL = 'http://localhost:3000';
+            // 读取txt文件函数
+                function readResultTxt() {
+                    // txtContent是最重要的base64码
+                    const txtContent = document.getElementById('txtContent');
+
+                    fetch(`${PROXY_SERVER_URL}/readResultTxt`)
+                        .then(response => response.text())
+                        .then(data => {
+                            txtContent.textContent = data;
+                        })
+                        .catch(error => {
+                            console.error('读取result.txt文件时出错：', error);
+                            alert('读取result.txt文件发生错误，请查看控制台以获取更多信息。');
+                        });
+                }
+        </script>
+    </body>
+</html>

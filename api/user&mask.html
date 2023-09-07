@@ -287,16 +287,6 @@
                                             <img src="8.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
                                             <img src="9.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
                                             <img src="10.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
-                                            <img src="11.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
-                                            <img src="12.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
-                                            <img src="13.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
-                                            <img src="14.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
-                                            <img src="15.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
-                                            <img src="16.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
-                                            <img src="17.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
-                                            <img src="18.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
-                                            <img src="19.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
-                                            <img src="20.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
                                             
                                         </div>
                                         <!-- <div id="selected-image-container"></div> -->
@@ -315,7 +305,7 @@
                     </div>
 
                     <a href="https://console.bce.baidu.com/tools/?_=1692863460488#/api?product=AI&project=%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB&parent=%E4%BA%BA%E5%83%8F%E7%89%B9%E6%95%88API&api=rest%2F2.0%2Fface%2Fv1%2Fmerge&method=post">点击生成</a>
-                    <img id="outout" src="">
+                    <pre id="txtContent"></pre>
                 </div>
 
             </div>
@@ -427,15 +417,22 @@
 
 <!-- 用户选择喜欢的脸谱的script -->
 <script>
-    previewImage.addEventListener('click', function (event) {
-            var clickedImage = event.target;
-            var imgElement = document.createElement('img');
-            imgElement.src = clickedImage.src;
-            sliderContainer.appendChild(imgElement);
+    const PROXY_SERVER_URL = 'http://localhost:3000';
+    
+    function selectImage(imageElement) {
+            // txtContent是最重要的base64码
+        const txtContent = document.getElementById('txtContent');
 
-            // 使用CSS变换实现放大效果  
-            imgElement.style.transform = 'scale(2)'; // 这里的2是放大倍数，你可以根据需要调整  
-        });
+        fetch(`${PROXY_SERVER_URL}/readResultTxt`)
+            .then(response => response.text())
+            .then(data => {
+                txtContent.textContent = "已选择：" + data;
+            })
+            .catch(error => {
+                console.error('读取result.txt文件时出错：', error);
+                alert('读取result.txt文件发生错误，请查看控制台以获取更多信息。');
+            });
+        }
     // document.getElementById('imgUpload').addEventListener('change', function (event) {
     //         var files = event.target.files;
     //         var imageContainer = document.getElementById('imageContainer');

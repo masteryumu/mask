@@ -1,7 +1,6 @@
 import express from 'express';
 import axios from 'axios';
 import cors from 'cors';
-import fs from 'fs';
 
 const app = express();
 const port = 3000;
@@ -30,7 +29,7 @@ app.get('/getAccessToken', async (req, res) => {
     res.status(500).json({ error: '获取Access Token失败' });
   }
 });
-var traf;
+var traf="";
 app.post('/mergeImages', async (req, res) => {
   try {
     const requestBody = req.body;
@@ -57,11 +56,6 @@ app.post('/mergeImages', async (req, res) => {
     traf = response.result.merge_image;
     console.log(responsebase64);
 
-
-    // 将 responsebase64 内容写入txt文件
-    const txtContent = responsebase64; // 假设 responsebase64 包含了要写入的文本内容
-    fs.writeFileSync('result.txt', txtContent, 'utf-8'); // 将内容写入 result.txt 文件
-
     // 返回图像合成的结果
     res.json(response);
   } catch (error) {
@@ -77,16 +71,6 @@ app.get('/api/data', (req, res) => {
   // 将数据作为JSON响应发送给前端
   res.json(data);
 });
-
- // 读取result.txt文件的路由
-        app.get('/readResultTxt', (req, res) => {
-            try {
-                const resultTxtContent = fs.readFileSync('result.txt', 'utf-8');
-                res.send(resultTxtContent);
-            } catch (error) {
-                res.status(500).json({ error: '读取result.txt文件失败' });
-            }
-        });
 
 async function performImageMerge(imageTarget, imageTemplate, version) {
   try {

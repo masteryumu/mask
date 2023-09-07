@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ua">
+<html lang="zh-CN">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -15,8 +15,8 @@
         }
     
         .gallery img {
-            width: 10%;
-            height: 10%;
+            width: 100%;
+            height: 100%;
             margin: 5px;
         }
         .image-slider {  
@@ -282,26 +282,26 @@
                                         <div class="slider-container">
                                             <!-- 用于存放图像的占位符 -->
                                             <div class="preview-image" style="border: 1px solid #ccc; cursor: pointer;"></div>
-                                            <img src="1.png" width=10% height=10% alt="关羽" onclick="selectImage(this)">
-                                            <img src="2.png" width=10% height=10% alt="Image 2" onclick="selectImage(this)">
-                                            <img src="3.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">
-                                            <img src="4.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">
-                                            <img src="5.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">
-                                            <img src="6.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">
-                                            <img src="7.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">
-                                            <img src="8.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">
-                                            <img src="9.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">
-                                            <img src="10.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">
-                                            <img src="11.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">
-                                            <img src="12.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">
-                                            <img src="13.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">
-                                            <img src="14.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">
-                                            <img src="15.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">
-                                            <img src="16.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">
-                                            <img src="17.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">
-                                            <img src="18.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">
-                                            <img src="19.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">
-                                            <img src="20.png" width=10% height=10% alt="Image 1" onclick="selectImage(this)">
+                                            <img src="1.png" width=100% height=100% alt="关羽" onclick="selectImage(this)">
+                                            <img src="2.png" width=100% height=100% alt="Image 2" onclick="selectImage(this)">
+                                            <img src="3.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
+                                            <img src="4.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
+                                            <img src="5.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
+                                            <img src="6.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
+                                            <img src="7.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
+                                            <img src="8.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
+                                            <img src="9.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
+                                            <img src="10.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
+                                            <img src="11.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
+                                            <img src="12.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
+                                            <img src="13.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
+                                            <img src="14.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
+                                            <img src="15.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
+                                            <img src="16.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
+                                            <img src="17.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
+                                            <img src="18.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
+                                            <img src="19.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
+                                            <img src="20.png" width=100% height=100% alt="Image 1" onclick="selectImage(this)">
                                             
                                         </div>
                                         <!-- <div id="selected-image-container"></div> -->
@@ -309,7 +309,7 @@
                                         src="" alt="Card image cap"> -->
                                     </div>
                                 </a>
-                                <img src=temp width=10% height=10% alt="关羽" onclick="selectImage(this)">
+                                <img src=temp width=100% height=100% alt="关羽" onclick="selectImage(this)">
                             </div>
                             <div class="card-body blog-details">
                                 <a href="#blog-single.html" class="blog-desc">
@@ -389,13 +389,32 @@
         }  
     var temp;
     function selectImage(imageElement) {
-        // var t=new FileReader;
-        // t.readAsDataURL(imageElement);
-        
-        temp=imageElement.src;
-        alert("你选择了图片："+ temp);
-        // 在这里可以进一步处理选择的图片，比如下载、预览等操作  
-        
+        var imageSrc = imageElement.src; // 获取图像的URL
+
+        // 创建一个新的Image对象以加载图像
+        var img = new Image();
+        img.crossOrigin = "Anonymous"; // 避免跨域问题
+
+        img.onload = function () {
+            // 创建一个Canvas元素用于绘制图像
+            var canvas = document.createElement("canvas");
+            canvas.width = this.width;
+            canvas.height = this.height;
+            var ctx = canvas.getContext("2d");
+            ctx.drawImage(this, 0, 0);
+
+            // 获取Canvas上绘制的图像的base64编码
+            var base64Data = canvas.toDataURL("image/png");
+
+            // 弹出窗口显示base64编码
+            alert("图像的Base64编码：\n" + base64Data);
+
+            // 在这里可以进一步处理base64编码的图像数据
+            console.log(base64Data); // 打印base64编码的图像数据
+        };
+
+        // 设置Image对象的源，开始加载图像
+        img.src = imageSrc;
     }
 
     document.getElementById('imageUpload').addEventListener('change', function (event) {

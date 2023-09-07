@@ -11,12 +11,12 @@ async function main() {
         },
         body: JSON.stringify({
                 "image_target": {
-                        "image": "[填写目标图URL:目标图信息 图片的分辨率要求在1920x1080以下]",
+                        "image": "1.png" ,
                         "image_type": "URL",
                         "quality_control": "NONE"
                 },
                 "image_template": {
-                        "image": "[填写参考图URL:模板图信息 图片的分辨率要求在1920x1080以下]",
+                        "image": "2.png" ,
                         "image_type": "URL"
                 },
                 "version": "2.0",

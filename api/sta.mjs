@@ -47,6 +47,10 @@ app.post('/mergeImages', async (req, res) => {
 
     // 调用图像合成函数并获取结果
     const response = await performImageMerge(image_target, image_template, version);
+    //console.log(response); // 打印图像合成的结果
+
+    const responsebase64 = response.result.merge_image;//base64编码
+    //console.log(responsebase64);
 
     // 返回图像合成的结果
     res.json(response);
@@ -80,11 +84,14 @@ async function performImageMerge(imageTarget, imageTemplate, version) {
       }
     });
 
-    return response.data;
+    const responseData = response.data; // 提取response.data并存储在responseData变量中
+
+    return responseData; // 返回responseData
   } catch (error) {
     throw new Error('图像合成失败: ' + error.message);
   }
 }
+
 
 // 获取百度AI的Access Token
 async function getAccessToken() {

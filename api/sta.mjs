@@ -1,17 +1,19 @@
 import express from 'express';
 import axios from 'axios';
-import cors from 'cors';
+import cors from 'cors'; // 引入cors模块
 
 const app = express();
 const port = 3000;
 
+// 使用cors中间件，允许所有源访问代理服务器
 app.use(cors());
-app.use(express.json());
 
+// 处理根路径的请求
 app.get('/', (req, res) => {
   res.send('Hello World');
 });
 
+// 获取百度AI的Access Token
 app.get('/getAccessToken', async (req, res) => {
   try {
     const AK = "RRygZS6wpLH5otPzhao5CZyr";
@@ -27,46 +29,46 @@ app.get('/getAccessToken', async (req, res) => {
   }
 });
 
+// 处理图像合成请求
 app.post('/mergeImages', async (req, res) => {
   try {
-    const requestBody = req.body;
+    const requestBody = req.body; // 获取请求体作为 JSON 对象
 
+    // 在这里设置图像合成的参数
     const image_target = {
-      image: requestBody.image_target,
+      image: 'https://img0.baidu.com/it/u=788673368,4264362421&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=463',
       image_type: "URL",
       quality_control: "NONE"
     };
-
+    
     const image_template = {
-      image: requestBody.image_template,
+      image: 'https://img0.baidu.com/it/u=2280817350,814068723&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500',
       image_type: "URL"
     };
 
-    const version = "2.0";
+        const version = "2.0";
+        // 添加其他参数如 alpha 和 merge_degree，如果需要
 
-    // 调用performImageMerge函数执行图像合成操作，并获取百度API的响应数据
-    const response = await performImageMerge(image_target, image_template, version);
+        // 在这里使用设置的参数进行图像合成操作，例如调用相应的图像合成 API
+        // 示例：这里假设你调用了某个图像合成 API，并将结果保存在 response 中
+        const response = await performImageMerge(image_target, image_template, version);
 
-    // 返回图像合成的结果
-    res.json(response);
-  } catch (error) {
-    res.status(500).json({ error: '图像合成失败' });
-  }
+        // 返回图像合成的结果
+        res.json(response);
+    } catch (error) {
+        res.status(500).json({ error: '图像合成失败' });
+    }
 });
 
 async function performImageMerge(imageTarget, imageTemplate, version) {
   try {
     // 在这里执行图像合成操作，调用百度AI服务或其他图像处理库
     // 这里需要根据你的具体需求编写代码，将imageTarget和imageTemplate合成并返回结果
+    // 以下是一个示例，你可以根据需要修改它
 
-    // 示例：这里假设你调用了某个图像合成 API，并将结果保存在 response 中
-    const response = await callSomeImageMergeAPI(imageTarget, imageTemplate, version);
-
-    // 处理百度API的响应数据，这取决于你调用的API和返回的数据格式
-    // 以下是一个示例，你可以根据实际情况修改它
     const result = {
-      error_code: response.error_code,
-      error_msg: response.error_msg,
+      error_code: 0,
+      error_msg: '图像合成成功',
       // 其他合成后的数据
     };
 
@@ -77,7 +79,7 @@ async function performImageMerge(imageTarget, imageTemplate, version) {
   }
 }
 
-// 在这里编写调用实际图像合成 API 的代码，将imageTarget和imageTemplate合成并返回结果
+
 
 app.listen(port, () => {
   console.log(`代理服务器已启动，监听端口 ${port}`);

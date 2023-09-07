@@ -9,11 +9,14 @@
 <body>
     <button onclick="mergeImages()">点击合成</button>
     <script>
-        const PROXY_SERVER_URL = 'http://localhost:3000';
+        // 修改为你的代理服务器地址
+        const PROXY_SERVER_URL = 'http://localhost:3000'; // 根据你的实际情况修改
 
-        const TARGET_IMAGE_URL = 'https://img0.baidu.com/it/u=788673368,4264362421&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=463';
-        const TEMPLATE_IMAGE_URL = 'https://img0.baidu.com/it/u=2280817350,814068723&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500';
+        // 常量定义
+        const TARGET_IMAGE_URL = 'https://img0.baidu.com/it/u=788673368,4264362421&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=463'; // 本地图像文件，请确保与HTML文件位于同一目录下
+        const TEMPLATE_IMAGE_URL = 'https://img0.baidu.com/it/u=2280817350,814068723&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500'; // 本地图像文件，请确保与HTML文件位于同一目录下
 
+        // 发送获取 Access Token 请求到代理服务器
         async function getAccessToken() {
             try {
                 const response = await fetch(`${PROXY_SERVER_URL}/getAccessToken`);
@@ -24,6 +27,7 @@
             }
         }
 
+        // 发送图像合成请求到代理服务器
         async function sendMergeRequest(accessToken) {
             try {
                 const url = `${PROXY_SERVER_URL}/mergeImages?access_token=${accessToken}`;
@@ -45,23 +49,26 @@
             }
         }
 
+        // 处理图像合成结果
         function handleMergeResponse(response) {
             console.log(response);
-
-            // 处理百度API的响应数据
             if (response.error_code === 0) {
                 alert('图像合成成功！');
-                // 在这里处理合成成功后的逻辑
             } else {
                 alert('图像合成失败：' + response.error_msg);
-                // 在这里处理合成失败后的逻辑
             }
         }
 
+        // 合成图像函数
         async function mergeImages() {
             try {
+                // 获取 Access Token
                 const accessToken = await getAccessToken();
+
+                // 发送合成请求
                 const response = await sendMergeRequest(accessToken);
+
+                // 处理合成结果
                 handleMergeResponse(response);
             } catch (error) {
                 console.error('合成图像时出错：', error);

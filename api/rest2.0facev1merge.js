@@ -11,17 +11,17 @@ async function main() {
         },
         body: JSON.stringify({
                 "image_target": {
-                        "image": "[填写目标图URL:目标图信息 图片的分辨率要求在1920x1080以下]",
+                        "image": "1.png" ,
                         "image_type": "URL",
                         "quality_control": "NONE"
                 },
                 "image_template": {
-                        "image": "[填写参考图URL:模板图信息 图片的分辨率要求在1920x1080以下]",
+                        "image": "2.png" ,
                         "image_type": "URL"
                 },
-                "version": "2.0[(Required) 服务版本 ，可选（1.0,2.0,3.0,4.0），如不传入该项则默认调用（1.0），2.0/3.0/4.0对merge_degree不生效，对融合效果要求较高可选择2.0（推荐版本），对融合结果的清晰度要求较高可选择3.0，4.0为最新版本，清晰度及融合效果均有提升，页面功能演示为2.0版本效果]",
-                "alpha": "[融合参数，可选范围 0-1浮点数,保留两位小数，默认(0), 只在version=4.0时才有效]",
-                "merge_degree": "[融合度 关系到融合图与目标图的相似度 越高则越相似LOW:较低的融合度NORMAL: 一般的融合度HIGH: 较高的融合度COMPLETE: 完全融合，其效果类似于换脸默认COMPLETE]"
+                "version": "2.0",
+                // "alpha": "[融合参数，可选范围 0-1浮点数,保留两位小数，默认(0), 只在version=4.0时才有效]",
+                // "merge_degree": "[融合度 关系到融合图与目标图的相似度 越高则越相似LOW:较低的融合度NORMAL: 一般的融合度HIGH: 较高的融合度COMPLETE: 完全融合，其效果类似于换脸默认COMPLETE]"
         })
 
     };

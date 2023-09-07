@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>图像合成</title>
+</head>
+
+<body>
+    <button onclick="mergeImages()">点击合成</button>
+    <script>
+        // 修改为你的代理服务器地址
+        const PROXY_SERVER_URL = 'http://localhost:3000'; // 根据你的实际情况修改
+
+        const TARGET_IMAGE_URL = `${PROXY_SERVER_URL}/1.png`; // 更新为正确的图像URL
+        const TEMPLATE_IMAGE_URL = `${PROXY_SERVER_URL}/2.png`; // 更新为正确的图像URL
+
+        // 发送获取 Access Token 请求到代理服务器
+        async function getAccessToken() {
+            try {
+                const response = await fetch(`${PROXY_SERVER_URL}/getAccessToken`);
+                const data = await response.json();
+                return data.access_token;
+            } catch (error) {
+                throw new Error('获取 Access Token 失败');
+            }
+        }
+
+        // 发送图像合成请求到代理服务器
+        async function sendMergeRequest(accessToken) {
+            try {
+                const url = `${PROXY_SERVER_URL}/mergeImages?access_token=${accessToken}`;
+
+                // 读取本地的图像文件并编码为 base64
+                const targetImageBlob = await fetch(TARGET_IMAGE_URL).then(response => response.blob());
+                const templateImageBlob = await fetch(TEMPLATE_IMAGE_URL).then(response => response.blob());
+
+                const targetImageBase64 = await blobToBase64(targetImageBlob);
+                const templateImageBase64 = await blobToBase64(templateImageBlob);
+
+                const formData = new FormData();
+                formData.append('image_target', targetImageBase64);
+                formData.append('image_template', templateImageBase64);
+                formData.append('image_type', 'BASE64'); // 图像类型改为 BASE64
+                formData.append('quality_control', 'NONE');
+                formData.append('version', '2.0');
+
+                const response = await fetch(url, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                return response.json();
+            } catch (error) {
+                throw new Error('发送图像合成请求失败');
+            }
+        }
+
+        // 处理图像合成结果
+        function handleMergeResponse(response) {
+            console.log(response);
+            if (response.error_code === 0) {
+                alert('图像合成成功！');
+            } else {
+                alert('图像合成失败：' + response.error_msg);
+            }
+        }
+
+        // 合成图像函数
+        async function mergeImages() {
+            try {
+                // 获取 Access Token
+                const accessToken = await getAccessToken();
+
+                // 发送合成请求
+                const response = await sendMergeRequest(accessToken);
+
+                // 处理合成结果
+                handleMergeResponse(response);
+            } catch (error) {
+                console.error('合成图像时出错：', error);
+                alert('图像合成发生错误，请查看控制台以获取更多信息。');
+            }
+        }
+
+        // 辅助函数：将 Blob 转换为 base64
+        function blobToBase64(blob) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    resolve(reader.result.split(',')[1]);
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(blob);
+            });
+        }
+    </script>
+</body>
+
+</html>
